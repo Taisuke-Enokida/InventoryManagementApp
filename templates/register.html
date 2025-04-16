@@ -14,15 +14,21 @@
         <div class="card-body">
             <form method="POST">
                 <div class="mb-3">
-                    <label class="form-label">名前</label>
-                    <input type="text" name="name" class="form-control" required>
+                    <label for="name" class="form-label">名前</label>
+                    <input type="text" id="name" name="name" class="form-control" required>
                 </div>
                 <div class="mb-3">
-                    <label class="form-label">パスワード</label>
-                    <input type="password" name="password" class="form-control" required>
+                    <label for="password" class="form-label">パスワード</label>
+                    <input type="password" id="password" name="password" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label for="role" class="form-label">役割</label>
+                    <select id="role" name="role" class="form-control" required>
+                        <option value="staff">従業員</option>
+                        <option value="admin">管理者</option>
+                    </select>
                 </div>
                 <button type="submit" class="btn btn-primary">登録</button>
-                <a href="{{ url_for('index') }}" class="btn btn-secondary">戻る</a>
             </form>
         </div>
     </div>
