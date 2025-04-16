@@ -246,6 +246,21 @@ def login():
         return redirect(url_for('index'))
     return render_template('login.html')
 
+@app.route('/movement/log')
+def movement_log():
+    conn = get_db_connection()
+    logs = conn.execute('''
+        SELECT sm.id, sm.type, sm.quantity, sm.timestamp, sm.note,
+               i.name AS item_name, u.name AS user_name
+        FROM stock_movements sm
+        JOIN items i ON sm.item_id = i.id
+        JOIN users u ON sm.user_id = u.id
+        ORDER BY sm.timestamp DESC
+    ''').fetchall()
+    conn.close()
+    return render_template('movement_log.html', logs=logs)
+
+
 if __name__ == '__main__':
     # アプリが起動するたびにデータベースを初期化（最初の一回だけ）
     init_db()
