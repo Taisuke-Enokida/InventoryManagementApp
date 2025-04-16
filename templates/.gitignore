@@ -1,0 +1,3 @@
+# SQLiteデータベースを除外
+*.db
+*.sqlite3
