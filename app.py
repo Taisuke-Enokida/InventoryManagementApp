@@ -260,7 +260,6 @@ def movement_log():
     conn.close()
     return render_template('movement_log.html', logs=logs)
 
-
 if __name__ == '__main__':
     # アプリが起動するたびにデータベースを初期化（最初の一回だけ）
     init_db()
